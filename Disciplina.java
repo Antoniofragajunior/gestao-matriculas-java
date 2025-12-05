@@ -5,15 +5,16 @@ public class Disciplina {
     private String codigo;
     private String titulo;
     private int capacidadeMaxima;
-    private List<Aluno> inscritos;
+    private List<Aluno> inscritos; // Lista de alunos 
     
     public Disciplina(String codigo, String titulo, int capacidadeMaxima) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.capacidadeMaxima = capacidadeMaxima;
-        this.inscritos = new ArrayList<>();
+        this.inscritos = new ArrayList<>(); // Inicializar a lista aqui
     }
-    
+
+    // Método auxiliar pra saber se cabe mais alunos
     public boolean isLotada() {
         return inscritos.size() >= capacidadeMaxima;
     }
@@ -34,7 +35,7 @@ public class Disciplina {
         this.capacidadeMaxima = capacidadeMaxima; 
     }
     
-    // Método para adicionar aluno (usado apenas pelo Matriculador)
+    // Método para adicionar aluno (Matriculador)
     boolean adicionarAluno(Aluno aluno) {
         // Verifica se já está inscrito (por matrícula)
         for (Aluno a : inscritos) {
@@ -42,7 +43,8 @@ public class Disciplina {
                 return false;
             }
         }
-        
+
+        //verifica se tem vagas
         if (!isLotada()) {
             inscritos.add(aluno);
             return true;
