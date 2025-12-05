@@ -9,7 +9,7 @@ public class Matriculador {
     public Matriculador() {
         this.ofertas = new ArrayList<>();
         this.alunos = new ArrayList<>();
-        this.proximaMatricula = 1000; // Começando de um número mais realista
+        this.proximaMatricula = 1000; // Começando do numero 1000 mais realista
     }
     
     public void cadastrarDisciplina(Disciplina d) {
@@ -31,11 +31,12 @@ public class Matriculador {
             throw new IllegalArgumentException("Aluno não pode ser nulo");
         }
         
-        a.setMatricula(proximaMatricula++);
+        a.setMatricula(proximaMatricula++); //Gerando matricula
         alunos.add(a);
         System.out.println("Aluno cadastrado: " + a.getMatricula() + " - " + a.getNome() + " - " + a.getEmail());
     }
-    
+
+    //Aluno + Disciplina
     public boolean matricular(int matricula, String codigoDisciplina) {
         Aluno aluno = buscarAluno(matricula);
         Disciplina disciplina = buscarDisciplina(codigoDisciplina);
@@ -74,7 +75,7 @@ public class Matriculador {
                 return aluno;
             }
         }
-        return null;
+        return null; //não achado
     }
     
     private Disciplina buscarDisciplina(String codigo) {
